@@ -1,4 +1,4 @@
 #!/usr/bin/env python
-import FinexAPI
+from FinexAPI import FinexAPI
 
-print FinexAPI.balances()
+print (FinexAPI.balances())

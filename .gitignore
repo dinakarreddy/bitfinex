@@ -1,2 +1,8 @@
 build
 keys.txt
+*.pyc
+venv/
+websockets/candle_files
+__pycache__
+websockets/ticker_files
+websockets/trade_files

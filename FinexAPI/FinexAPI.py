@@ -13,7 +13,7 @@ __all__ = ['ticker', 'today', 'orderbook', 'lendbook', 'stats', 'trades', 'lends
 
 URL = "https://api.bitfinex.com/v1"
 
-fp = open("../keys.txt")
+fp = open("/Users/caesar/Desktop/bitfinex/bitfinex/keys.txt")
 
 API_KEY = fp.readline().rstrip() # put your API public key here.
 API_SECRET = fp.readline().rstrip() # put your API private key here.
@@ -96,14 +96,14 @@ def symbols(): # get a list of valid symbol IDs.
 # authenticated
 
 def genNonce(): # generates a nonce, used for authentication.
-	return str(long(time.time() * 1000000))
+	return str(time.time() * 1000000)
 
 def payloadPacker(payload): # packs and signs the payload of the request.
 
 	j = json.dumps(payload)
-	data = base64.standard_b64encode(j)
+	data = base64.standard_b64encode(j.encode())
 
-	h = hmac.new(API_SECRET, data, hashlib.sha384)
+	h = hmac.new(API_SECRET.encode(), data, hashlib.sha384)
 	signature = h.hexdigest()
 
 	return {
